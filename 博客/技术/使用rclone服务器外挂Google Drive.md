@@ -1,7 +1,6 @@
-
 ## 引子
 
-前不久入手了一台 **16H16G 的服务器**，111 三年的价格确实香。因为是小厂商的机器，多少还是有点“跑路风险”的担忧，所以我给一些关键数据做同步。
+前不久入手了一台 **16H16G 的服务器**，111 三年的价格确实香。因为是小厂商的机器，多少还是有点“跑路风险”的担忧，所以我给一些关键数据做了额外备份。
 
 这里我使用 **rclone** 将 **Google Drive 挂载成服务器的一个磁盘目录**，把需要长期保存的文件定时同步到这个“外挂硬盘”里，算是给数据多上一道保险。
 
@@ -61,15 +60,12 @@ n/s/q> n
 ```
 
 输入n 创建新的远程
-
-```
+```bash
 Enter name for new remote.
 name> gdrive
 ```
-
 输入名称如我的叫 `gdrive` 回车
-
-```
+```bash
 Option Storage.
 Type of storage to configure.
 Choose a number from below, or type in your own value.
@@ -201,10 +197,8 @@ Choose a number from below, or type in your own value.
    \ (seafile)
 Storage> 22
 ```
-
 输入22 选择 Google Drive
-
-```
+```bash
 Option client_id.
 Google Application Client Id
 Setting your own is recommended.
@@ -212,23 +206,18 @@ See https://rclone.org/drive/#making-your-own-client-id for how to create your o
 If you leave this blank, it will use an internal key which is low performance.
 Enter a value. Press Enter to leave empty.
 client_id> 
-
 ```
-
 这里直接回车即可：
 空着就行,你不追求高并发访问的话，用 rclone 内置的 client_id 完全够用。继续下一步。
-
-```
+```bash
 Option client_secret.
 OAuth Client Secret.
 Leave blank normally.
 Enter a value. Press Enter to leave empty.
 client_secret> 
-
 ```
 同样直接回车,留空即可。继续下一步。
-
-```
+```bash
 Option scope.
 Comma separated list of scopes that rclone should use when requesting access from drive.
 Choose a number from below, or type in your own value.
@@ -248,13 +237,9 @@ Press Enter to leave empty.
  5 | does not allow any access to read or download file content.
    \ (drive.metadata.readonly)
 scope> 1
-
 ```
-
 这里选 1，你要把 Google Drive 挂载到服务器当硬盘用，需要完整读写权限。
-
-
-```
+```bash
 Option service_account_file.
 Service Account Credentials JSON file path.
 Leave blank normally.
@@ -262,23 +247,17 @@ Needed only if you want use SA instead of interactive login.
 Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
 Enter a value. Press Enter to leave empty.
 service_account_file> 
-
 ```
-
 这里继续回车，留空即可：
 你不需要 Service Account，这一步直接跳过。继续下一步。
-
-```
+```bash
 Edit advanced config?
 y) Yes
 n) No (default)
 y/n> n
-
 ```
-
 这里选 n，不需要改高级配置。
-
-```
+```bash
 Use web browser to automatically authenticate rclone with remote?
  * Say Y if the machine running rclone has a web browser you can use
  * Say N if running rclone on a (remote) machine without web browser access
@@ -287,12 +266,9 @@ If not sure try Y. If Y failed, try N.
 y) Yes (default)
 n) No
 y/n> n
-
 ```
-
 你这是在服务器里跑的，应该是没有浏览器的，选 n。
-
-```
+```bash
 Option config_token.
 For this to work, you will need rclone available on a machine that has
 a web browser available.
@@ -304,33 +280,26 @@ Then paste the result.
 Enter a value.
 config_token> 
 ```
-
-
 需要切换到本地电脑终端，在本地终端运行下面命令。浏览器会弹出来让你授权。
 正常授权即可
 
 ```bash
 rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
 ```
-
 完成授权得到tocken 粘贴到服务器里面
-
 ![image.png](https://img.dryice.icu/images/2025/11/20/20251120155813856_repeat_1763625496676__432829.png)
 
 ![image.png](https://img.dryice.icu/images/2025/11/20/20251120160105704_repeat_1763625667279__355609.png)
 
-
-```
+```bash
 Configure this as a Shared Drive (Team Drive)?
 
 y) Yes
 n) No (default)
 y/n> n
 ```
-
 这里选 n，因为你用的是个人 Google Drive，不是企业 Workspace 的 Team Drive（共享盘）。
-
-```
+```bash
 Configuration complete.
 Options:
 - type: drive
