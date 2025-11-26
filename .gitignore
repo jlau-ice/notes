@@ -2,3 +2,7 @@
 .obsidian/.trash/
 .obsidian/backups/
 .obsidian/*.local
+
+.idea
+.vscode
+.DS_Store
