@@ -312,7 +312,8 @@ public class ChatMemoryController {
 | **`AssistantMessage`** | Assistant (助手) | 包含模型**历史的回复**。                             | 用于在构建 `Prompt` 时，手动加入历史对话（通常由 `ChatMemory` 自动管理）。                                                                                           |  
 | **`ToolMessage`**        | Tool (工具)      | 包含 LLM 请求调用的**外部工具执行后的结果或输出**。             | LLM 决定调用一个函数（例如：`get_weather(location)`）。<br>应用执行该函数得到结果（例如：`{"temperature": "25°C"}`）。<br>**`ToolMessage`** 将这个结果反馈给 LLM，让其基于此结果生成最终的用户回复。 |  
   
-### 3.2 使用示例 下面分别是 `ChatClient` 和 `ChatModel` 的使用方式：  
+### 3.2 使用示例
+下面分别是 `ChatClient` 和 `ChatModel` 的使用方式：  
 ```java  
 @RestController  
 @RequestMapping("/prompt")  
@@ -490,7 +491,7 @@ Spring AI 为每个支持的向量数据库提供了 **自动配置（AutoConfig
   
 **Bean 定义名称冲突**会直接阻止 Spring 容器完成初始化。  
   
-#### 5.4.1 解决方案：手动排除自动配置并创建 Bean  
+**解决方案：手动排除自动配置并创建 Bean**  
   
 为了避免这种底层的名称冲突，最健壮的方法是阻止 Spring Boot 自动加载所有冲突的 `VectorStore` 自动配置类，然后手动创建您需要的那个 Bean。  
   
