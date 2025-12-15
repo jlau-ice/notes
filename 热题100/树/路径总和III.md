@@ -6,44 +6,7 @@
 
 在每个节点遍历的是后去找这个节点所有路径为 target 的个数
 
-分开写就明白了
-这是找 节点 node 所有路径为 target 的个数
-```java
-class Solution {
-    public int getTargetPathCount(TreeNode node, long target) {
-        if(node == null) {
-            return 0;
-        }
-        int count = 0;
-        if(node.val == target) {
-          count++;
-        }
-        int leftCount = getTargetPathCount(node.left, target - node.val);
-        int rightCount = getTargetPathCount(node.right, target - node.val);
-        return count + leftCount + rightCount;
-    }
-}
-```
-
-这是遍历每个节点。
-```java
-class Solution {
-    public int pathSum(TreeNode root, long targetSum) {
-        if (root == null) {
-            return 0;
-        }
-        int count += countPathsFromNode(root, targetSum);
-        count += pathSum(root.left, targetSum);
-        count += pathSum(root.right, targetSum);
-        return count;
-    }
-}
-```
-
-
-
 整体代码
-
 ```java
 /**
  * Definition for a binary tree node.
@@ -65,23 +28,21 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        int count = countPathsFromNode(root, targetSum);
-        count += pathSum(root.left, targetSum);
-        count += pathSum(root.right, targetSum);
-        return count;
+        // 计算当前节点的所有路径，这个放哪都行，前中后序遍历的时候用来收集节点的list 一个作用。
+        int count = curNodeTargetCount(root, targetSum);
+        int lcount = pathSum(root.left, targetSum);
+        int rcount = pathSum(root.right, targetSum);
+        return lcount + rcount + count;
     }
 
-    private int countPathsFromNode(TreeNode root, long targetSum) {
-        int count = 0;
-        if (root == null) {
+    // 这个是核心方法，用来计算当前节点为起点 的 有几个加起来可以 凑够 targetSum
+    private int curNodeTargetCount(TreeNode node, long targetSum) {
+        if (node == null) {
             return 0;
         }
-        if (root.val == targetSum) {
-            count++;
-        }
-        count += countPathsFromNode(root.left, targetSum - root.val);
-        count += countPathsFromNode(root.right, targetSum - root.val);
-        return count;
+        int l = curNodeTargetCount(node.left, targetSum - node.val);
+        int r = curNodeTargetCount(node.right, targetSum - node.val);
+        return (node.val == targetSum ? 1 : 0) + l + r;
     }
 }
 ```
