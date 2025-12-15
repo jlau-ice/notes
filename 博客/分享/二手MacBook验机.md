@@ -21,11 +21,25 @@
 ## 喇叭检查
 
 ## 查看是否见监管锁
-
+重装系统或者
+```bash
+profiles status -type enrollment
+```
 
 ## 下载软件检查
 部件生产日期，看看是不是 符合的
+Apple Service Diagnostic (ASD) 来深度检测硬件
+电池检查
+CoconutBattery
+读写测试
+Blackmagic Disk Speed Test 
 
+
+## 银盘读写
+```bash
+brew install smartmontools
+smartctl -a /dev/disk2
+```
 
 ## 触控板和指纹解锁检查
 
