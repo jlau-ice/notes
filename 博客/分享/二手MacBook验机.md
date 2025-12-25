@@ -20,6 +20,8 @@
 
 ## 喇叭检查
 
+声音开到最大看看是否有破音
+
 ## 查看是否见监管锁
 重装系统或者
 ```bash
@@ -35,7 +37,7 @@ CoconutBattery
 Blackmagic Disk Speed Test 
 
 
-## 银盘读写
+## 硬盘读写检查
 ```bash
 brew install smartmontools
 smartctl -a /dev/disk2
@@ -49,6 +51,3 @@ smartctl -a /dev/disk2
 
 打开系统偏好设置，看看ID是否为空。
 输入自己的ID,看看你不能登陆上去。
-
-## 重装系统
-
