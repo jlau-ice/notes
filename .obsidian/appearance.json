@@ -1,7 +1,11 @@
 {
   "accentColor": "",
-  "cssTheme": "Minimal",
-  "theme": "system",
-  "interfaceFontFamily": "Adwaita Mono",
-  "textFontFamily": "Adwaita Mono,DejaVu Sans Mono,Andale Mono,JetBrainsMono Nerd Font Mono"
+  "cssTheme": "AnuPpuccin",
+  "theme": "moonstone",
+  "interfaceFontFamily": "JetBrainsMonoNL Nerd Font",
+  "textFontFamily": "JetBrainsMono Nerd Font Mono,Adwaita Mono,DejaVu Sans Mono,Andale Mono",
+  "nativeMenus": false,
+  "monospaceFontFamily": "JetBrainsMonoNL Nerd Font Mono",
+  "baseFontSize": 15,
+  "baseFontSizeAction": true
 }
