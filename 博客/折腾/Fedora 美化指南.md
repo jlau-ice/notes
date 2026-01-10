@@ -5,55 +5,56 @@
 sudo dnf install fuse fuse-libs
 ```
 
-
-
 输入法
 
-| <font style="color:rgb(249, 250, 251);">步骤</font> | <font style="color:rgb(249, 250, 251);">操作</font> | <font style="color:rgb(249, 250, 251);">命令/方法</font> | <font style="color:rgb(249, 250, 251);">说明与提示</font> |
-| --- | --- | --- | --- |
-| **<font style="color:rgb(249, 250, 251);">1. 安装Fcitx5</font>** | <font style="color:rgb(249, 250, 251);">安装核心包、中文输入法和配置工具</font> | `<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">sudo dnf install fcitx5 fcitx5-chinese-addons fcitx5-configtool</font>` | <font style="color:rgb(249, 250, 251);">这提供了框架、拼音/五笔等输入法和图形配置界面</font><font style="color:rgb(249, 250, 251);">。</font> |
-| **<font style="color:rgb(249, 250, 251);">2. 添加自启动</font>** | <font style="color:rgb(249, 250, 251);">安装自启动脚本，让Fcitx5开机运行</font> | `<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">sudo dnf install fcitx5-autostart</font>` | <font style="color:rgb(249, 250, 251);">安装后通常</font>**<font style="color:rgb(249, 250, 251);">需要注销并重新登录</font>**<font style="color:rgb(249, 250, 251);">才能生效</font><font style="color:rgb(249, 250, 251);">。</font> |
-| **<font style="color:rgb(249, 250, 251);">3. 配置环境变量</font>** | <font style="color:rgb(249, 250, 251);">在</font><font style="color:rgb(249, 250, 251);"> </font>`<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">~/.zshrc</font>`<br/><font style="color:rgb(249, 250, 251);"> </font><font style="color:rgb(249, 250, 251);">中添加变量，让程序能调用Fcitx5</font> | <font style="color:rgb(249, 250, 251);">在文件末尾添加：</font><font style="color:rgb(249, 250, 251);">   </font>`<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">export GTK_IM_MODULE=fcitx</font>`<br/><font style="color:rgb(249, 250, 251);">   </font>`<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">export QT_IM_MODULE=fcitx</font>`<br/><font style="color:rgb(249, 250, 251);">   </font>`<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">export XMODIFIERS=@im=fcitx</font>` | <font style="color:rgb(249, 250, 251);">添加后执行</font><font style="color:rgb(249, 250, 251);"> </font>`<font style="color:rgb(249, 250, 251);background-color:rgb(44, 44, 46);">source ~/.zshrc</font>`<br/><font style="color:rgb(249, 250, 251);"> </font><font style="color:rgb(249, 250, 251);">使配置在当前终端生效。</font>**<font style="color:rgb(249, 250, 251);">重启电脑或注销登录</font>**<font style="color:rgb(249, 250, 251);">是确保所有程序生效的最可靠方式。</font> |
-| | | | |
+安装Fcitx5 安装核心包、中文输入法和配置工具 这提供了框架、拼音/五笔等输入法和图形配置界面。
+```bash
+sudo dnf install fcitx5 fcitx5-chinese-addons fcitx5-configtool
+```
+添加自启动 安装自启动脚本，让Fcitx5开机运行
+```bash
+sudo dnf install fcitx5-autostart
+```
 
-
+配置环境变量 /etc/envi...
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
 
 
 显卡驱动安装
 
-```plain
+```bash
 sudo dnf install \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-
 sudo dnf makecache
 
 sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
-
 ```
-
-
-
 
 
 拓展下载 ： 
 
-```plain
+```bash
 sudo dnf install flatpak
 
+# 解决源不生效的问题
 flatpak remote-delete fedora
 flatpak remote-delete flathub
+# 重新添加
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-
+# 安装拓展管理器
 flatpak search ExtensionManager
 flatpak install flathub com.mattjakeman.ExtensionManager
 ```
 
 
 
-```plain
+```bash
 Blur my Shell  # 他会让你桌面上面以及周围 是亚克力效果。很不错
 
 Burn my Shell  # 窗口打开、关闭 特效
@@ -75,7 +76,6 @@ Clipboard Indicator # 剪切板历史
 Lock Keys  # 大写锁字母等开启情况
 
 ```
-
 
 
 **GRUB美化**
@@ -103,11 +103,11 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 zsh 安装主题配置
 
-```plain
+``` bash
 sudo dnf install zsh
-
 # 修改shell
 chsh -s /usr/bin/zsh
+# 重启
 ```
 
 终端美化
@@ -119,7 +119,6 @@ dnf install starship
 
 # 或者脚本安装
 curl -sS https://starship.rs/install.sh | sh
-
 
 # 编辑zshrc 
 
@@ -134,7 +133,7 @@ curl -sS https://starship.rs/install.sh | sh
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/34904774/1768014475413-9d66460b-4445-4801-a5fe-d0f80dc83dab.png)
 
-```plain
+```bash
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf install ghostty
 
@@ -153,7 +152,7 @@ sudo dnf install zsh-completions
 
 
 
-```plain
+```bash
 # .zshrc 配置
 # 这个是starshship 主题配置
 eval "$(starship init zsh)"
@@ -202,7 +201,7 @@ setopt EXTENDED_HISTORY
 
 开启可变刷新率
 
-```plain
+```bash
 flatpak install page.tesk.Refine
 ```
 
@@ -212,16 +211,12 @@ ghotty 美化
 
 配色下载地址 [https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf](https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf)
 
-```plain
-
+```bash
 theme = /home/ice/.config/ghostty/catppuccin-frappe.conf
 background-opacity = 0.85
 
 font-family = "Adwaita Mono"
 font-size = 15
-
-
-
 #隐藏标题栏
 window-decoration = none
 
@@ -235,16 +230,15 @@ window-padding-y=10
 
 字体
 
-```plain
+```bash
 sudo dnf install google-droid-sans-mono-fonts
-
 ```
 
 **下载字体包：** 访问 [JetBrains Mono 官网](https://www.jetbrains.com/lp/mono/) 点击下载，或者在终端直接用 `wget`：
 
 1. Bash
 
-```plain
+```bash
 wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 ```
 
@@ -252,7 +246,7 @@ wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 
 2. Bash
 
-```plain
+```bash
 unzip JetBrainsMono-2.304.zip -d jetbrains-font
 ```
 
@@ -264,7 +258,7 @@ unzip JetBrainsMono-2.304.zip -d jetbrains-font
 
 4. Bash
 
-```plain
+```bash
 # 假设你安装给全系统
 sudo cp -r jetbrains-font/fonts/ttf/*.ttf /usr/share/fonts/jetbrains/
 ```
@@ -273,7 +267,7 @@ sudo cp -r jetbrains-font/fonts/ttf/*.ttf /usr/share/fonts/jetbrains/
 
 5. Bash
 
-```plain
+```bash
 fc-cache -fv
 ```
 
@@ -296,7 +290,7 @@ Fedora 默认可能只安装了基础字体。通过 `dnf` 安装最通用的开
 
 Bash
 
-```plain
+```bash
 # 安装 思源黑体 (Adobe Source Han Sans) 和 文泉驿微米黑
 sudo dnf install adobe-source-han-sans-cn-fonts wqy-microhei-fonts wqy-zenhei-fonts
 
@@ -313,7 +307,7 @@ Fedora 默认安装的是 `google-noto-sans-cjk-vf-fonts`（VF 代表 Variable F
 
 Bash
 
-```plain
+```bash
 # 移除可变字体版本
 sudo dnf remove google-noto-sans-cjk-vf-fonts
 
