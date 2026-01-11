@@ -295,3 +295,7 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
   -h, --help                  show this help
 ```
+
+sudo grubby --update-kernel=ALL --args="amdgpu.dcdebugmask=0x8000"
+
+sudo grubby --update-kernel=ALL --remove-args="amdgpu.dcdebugmask=0x8000"
