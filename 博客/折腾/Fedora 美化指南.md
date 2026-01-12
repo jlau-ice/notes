@@ -281,3 +281,50 @@ cd grub2-themes
 sudo ./install.sh -t tela -s 1080p
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
+
+
+
+## 开发环境
+
+nvm
+```bash
+sudo pacman -S nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
+
+
+pnpm 单node 管理
+pnpm 不跟着 Node 自动装，nvm 每切一个 Node，都要单独处理。
+```bash
+
+corepack enable
+
+corepack prepare pnpm@latest --activate
+```
+
+zshrc 内容补充
+
+```bash
+alias clash='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 clash-verge > ~/clash_verge.log 2>&1 &'
+
+alias jep='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 /home/ice/file/zip/jetbrains-crack-toolbox_2.2.0_linux/jetbrains-crack-toolbox > ~/jetbrains-crack.log 2>&1 &'
+
+
+# 开启代理
+proxy() {
+  export http_proxy="http://127.0.0.1:7897"
+  export https_proxy="http://127.0.0.1:7897"
+  export HTTP_PROXY="$http_proxy"
+  export HTTPS_PROXY="$https_proxy"
+  export NO_PROXY="localhost,127.0.0.1,::1"
+  export no_proxy="$NO_PROXY"
+}
+
+# 取消代理
+unproxy() {
+  unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY no_proxy NO_PROXY
+}
+```
