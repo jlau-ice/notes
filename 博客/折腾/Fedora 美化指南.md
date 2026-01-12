@@ -273,19 +273,37 @@ flatpak install page.tesk.Refine
 
 ## GRUB启动美化
 
-你可以去 [Gnome-look.org](https://www.gnome-look.org/browse?cat=109) 寻找喜欢的 GRUB 主题。这里我推荐一个非常流行且自动化的工具：**Vinceliuice 的 GRUB 主题库**。
+你可以去 [Gnome-look.org](https://www.gnome-look.org/browse?cat=109) 寻找喜欢的 GRUB 主题。这里我推荐一个非常流行且自动化的工具：Vinceliuice 的 GRUB 主题库。
 
 ```bash
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
-sudo ./install.sh -t tela -s 1080p
+# sudo ./install.sh -t whitesur -s 2k
+# sudo ./install.sh -t whitesur -c 2560x1600
+sudo ./install.sh -t whitesur -c 1920x1080
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
+```text
+  -t, --theme                 theme variant(s)          [tela|vimix|stylish|whitesur]       (default is tela)
+  -i, --icon                  icon variant(s)           [color|white|whitesur]              (default is color)
+  -s, --screen                screen display variant(s) [1080p|2k|4k|ultrawide|ultrawide2k] (default is 1080p)
+  -c, --custom-resolution     set custom resolution     (e.g., 1600x900)                    (disabled in default)
+  -r, --remove                remove theme              [tela|vimix|stylish|whitesur]       (must add theme name option, default is tela)
 
+  -b, --boot                  install theme into '/boot/grub' or '/boot/grub2'
+  -g, --generate              do not install but generate theme into chosen directory       (must add your directory)
+
+  -h, --help                  show this help
+```
+
+尝试加参数处理显示器刷新率的问题
+```bash
+sudo grubby --update-kernel=ALL --args="amdgpu.dcdebugmask=0x8000"
+sudo grubby --update-kernel=ALL --remove-args="amdgpu.dcdebugmask=0x8000"
+```
 
 ## 开发环境
-
 nvm
 ```bash
 sudo pacman -S nvm
