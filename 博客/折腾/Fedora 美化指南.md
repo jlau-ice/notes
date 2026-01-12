@@ -238,6 +238,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # 安装拓展管理器
 flatpak search ExtensionManager
 flatpak install flathub com.mattjakeman.ExtensionManager
+# Pins 可以隐藏快捷方式以及更换快捷方式图标
+flatpak install io.github.fabrialberio.pinapp
 ```
 
 
