@@ -2,13 +2,13 @@ GNOME桌面使用appimagelauncherd 安装Appimage 程序底部栏有的图标会
 
 ![image.png](https://img.dryice.icu/images/2026/01/15/20260115163357891_repeat_1768466039207__085692.png)
 
-我遇到的两个软件就有这个问题。一个是 PicGo,一个是 Navicat。
-如上图所示。运行navicat底下显示的是GNOME默认给的一个默认图标。
-我很奇怪我的Obsidian也是Appimage运行的为啥就这两货运行起来图标就不能正常显示呢？
-查询了一写资料，也有人遇到类似情况，好像换一个Appimage管理工具就好了不用appimagelauncherd。
-没有别的办法吗？问了一些啊伟大的 gemini。试了一下真解决了。
 
-使用这个命令去，然后点击 Navicat 窗口。或者直接鼠标悬浮在运行程序上面就会显示 AppRun,从上图可以看到。
+我遇到的两个软件就有这个问题。一个是 PicGo,一个是 Navicat。如上图所示。运行navicat底下显示的是GNOME默认给的一个默认图标。我很奇怪我的Obsidian也是Appimage运行的为啥就这两货运行起来图标就不能正常显示呢？
+
+查询了一写资料，也有人遇到类似情况，好像换一个Appimage管理工具就好了不用appimagelauncherd。没有别的办法吗？问了一些啊伟大的 gemini。试了一下真解决了。
+
+使用下面这个命令，然后点击 Navicat 窗口。（或者直接鼠标悬浮在运行程序上面就会显示 AppRun,从上图可以看到。）
+
 ```bash
 xprop WM_CLASS
 ```
