@@ -178,9 +178,10 @@ setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm              [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-                                                                                alias clash='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 clash-verge > ~/clash_verge.log 2>&1 &'
-                                                                   alias jep='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 /home/ice/file/zip/jetbrains-crack-toolbox_2.2.0_linux/jetbrains-crack-toolbox > ~/jetbrains-crack.log 2>&1 &'
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm              
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias clash='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 clash-verge > ~/clash_verge.log 2>&1 &'
+alias jep='nohup env WEBKIT_DISABLE_COMPOSITING_MODE=1 /home/ice/file/zip/jetbrains-crack-toolbox_2.2.0_linux/jetbrains-crack-toolbox > ~/jetbrains-crack.log 2>&1 &'
 
 # 开启代理
 proxy() {
@@ -202,11 +203,24 @@ alias switch-ohmyzsh='source ~/.zshrc.zsh-init'
 alias cls='clear'
 alias ll='ls -l'
 
+# claude code
+export PATH="$HOME/.local/bin:$PATH"
+
 # Docker 容器简化格式化输出
 alias dpsf='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Ports}}"'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dpsm='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"'
+
+# 这里的路径请确保与你的 ~/jdks 目录下的文件夹名一致
+alias usejdk8='_switch_jdk ~/jdks/jdk1.8.0_461'
+alias usejdk11='_switch_jdk ~/jdks/jdk-11.0.28'
+alias usejdk17='_switch_jdk ~/jdks/jdk-17.0.16'
+alias usejdk21='_switch_jdk ~/jdks/jdk-21.0.9'
+
+# 设置一个默认 JDK (比如 21)
+export JAVA_HOME=~/jdks/jdk-21.0.9
+export PATH=$JAVA_HOME/bin:$PATH
 ```
 
 重启终端就能看见配置好了，效果如下
