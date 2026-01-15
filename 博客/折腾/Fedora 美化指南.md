@@ -271,6 +271,8 @@ AppIndicator and KStatusNotifierItem Support  # 他会在状态栏显示应用
 Clipboard Indicator # 剪切板历史
 
 Lock Keys  # 大写锁字母等开启情况
+
+Steal My Focus window # 他不会提示XX已就绪 他直接会打开那个程序
 ```
 
 
