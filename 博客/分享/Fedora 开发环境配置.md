@@ -29,6 +29,14 @@ export PATH=$JAVA_HOME/bin:$PATH
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+
+# pnpm 安装
+# 启用 corepack
+corepack enable
+
+# 激活特定版本的 pnpm (可选)
+corepack prepare pnpm@latest --activate
 ```
 
 ## claude code脚本安装
