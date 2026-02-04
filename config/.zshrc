@@ -70,6 +70,56 @@ alias dpsm='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"'
 # claude code 
 export PATH="$HOME/.local/bin:$PATH"
 
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+portexit() {
+    if lsof -i :$1 > /dev/null; then
+        echo "端口 $1 已被占用"
+        return 1
+    else
+        echo "端口 $1 可用"
+        return 0
+    fi
+}
+
+useAnyRoute() {
+  proxy
+  export ANTHROPIC_AUTH_TOKEN="sk-2HT3li3mMwx0vDUkxe0jE3fZGvzL22vMfF8XF1fC1h3WsxDd"
+  #export ANTHROPIC_BASE_URL="https://anyrouter.top"
+  export ANTHROPIC_BASE_URL="https://any1.colin1112.me"
+  # 【核心对话模型】直接上最高版本 4.5，处理最复杂的系统架构
+  export ANTHROPIC_MODEL="claude-sonnet-4-5-20250929"
+  # 【推理/逻辑模型】使用 4.5 级别的推理能力，解决高难度 Bug
+  export ANTHROPIC_REASONING_MODEL="claude-sonnet-4-5-20250929"
+  # 【分档默认模型】
+  # Haiku 档：依然保留 3.5 Haiku 确保极速响应
+  export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-4-5-20251001"
+  # Sonnet 档：使用 4.5 系列
+  export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-5-20250929"
+  # Opus 档：使用最高阶的 Opus 4.5 占位符
+  export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-sonnet-4-5-20250929"
+  echo "Claude Code: Max performance mode (v4.5) enabled."
+}
+
+useHotaruapi() {
+  proxy
+  export ANTHROPIC_AUTH_TOKEN="sk-3i36IRJb9qzJV2pAg6vxJStXVhItPFpSEDEfMwnrXKJ5SFsy"
+  #export ANTHROPIC_BASE_URL="https://anyrouter.top"
+  export ANTHROPIC_BASE_URL="https://api.hotaruapi.top"
+  # 【核心对话模型】直接上最高版本 4.5，处理最复杂的系统架构
+  export ANTHROPIC_MODEL="claude-opus-4-5-20251101"
+  # 【推理/逻辑模型】使用 4.5 级别的推理能力，解决高难度 Bug
+  export ANTHROPIC_REASONING_MODEL="claude-opus-4-5-20251101"
+  # 【分档默认模型】
+  # Haiku 档：依然保留 3.5 Haiku 确保极速响应
+  export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-4-5-20251001"
+  # Sonnet 档：使用 4.5 系列
+  export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-5-20250929"
+  # Opus 档：使用最高阶的 Opus 4.5 占位符
+  export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-sonnet-4-5-20250929"
+  echo "Claude Code: Max performance mode (v4.5) enabled."
+}
+
 # --- JDK Switcher ---
 function _switch_jdk() {
     export JAVA_HOME=$1
